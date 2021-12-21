@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "T6xi1KIBx+0gnlXp0q5KU2xvk/3QFSL+d2O4PZ/L0MptU6UTs80RX3DiIgdSt4M+EHRTFyCC8QCt8ywK2ZOO+Q==",
+  "dgSpecHash": "GqIO5wOI6eCFauf8/F/LpbPE8EsISUYymDRSo0FJRB0oY6fvbBgkq4TE7NpW1bMVKvc5uLG0Oipd5bttCQOdSA==",
   "success": true,
   "projectFilePath": "C:\\Users\\cirsa\\source\\repos\\WarrantyRegUnitTest\\WarrantyRegUnitTest.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\cirsa\\.nuget\\packages\\castle.core\\4.4.0\\castle.core.4.4.0.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.7\\microsoft.aspnetcore.cryptography.internal.5.0.7.nupkg.sha512",
@@ -69,6 +70,7 @@
     "C:\\Users\\cirsa\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\cirsa\\.nuget\\packages\\moq\\4.16.1\\moq.4.16.1.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\mstest.testadapter\\2.2.3\\mstest.testadapter.2.2.3.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\mstest.testframework\\2.2.3\\mstest.testframework.2.2.3.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
@@ -116,6 +118,7 @@
     "C:\\Users\\cirsa\\.nuget\\packages\\system.diagnostics.tracesource\\4.3.0\\system.diagnostics.tracesource.4.3.0.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
+    "C:\\Users\\cirsa\\.nuget\\packages\\system.dynamic.runtime\\4.3.0\\system.dynamic.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\system.globalization.calendars\\4.3.0\\system.globalization.calendars.4.3.0.nupkg.sha512",
     "C:\\Users\\cirsa\\.nuget\\packages\\system.globalization.extensions\\4.3.0\\system.globalization.extensions.4.3.0.nupkg.sha512",
