@@ -10,16 +10,10 @@ using WarrantyRegistrationApp.Repository;
 namespace WarrantyRegUnitTest
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTestWarrantyReg
     {
         [TestMethod]
-        public void TestMethod()
-        {
-
-        }
-
-        [TestMethod]
-        public async Task TestGetAllAsyncxMethodAsync()
+        public async Task TestGetAllAsyncMethodAsync()
         {
             ActionResult<IEnumerable<Customer>> customers = new List<Customer>()
             {
