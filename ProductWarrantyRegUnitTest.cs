@@ -167,7 +167,7 @@ namespace WarrantyRegUnitTest
             var content = result.Result as ObjectResult;
             var productWarranty = (ProductWarrantyData) content.Value;
 
-            Assert.AreEqual(System.DateTime.Now.AddYears(5).Year, productWarranty.warrantyDate.Year);
+            Assert.AreEqual(System.DateTime.Now.AddYears(5).Year, productWarranty.WarrantyDate.Year);
         }
 
         [TestMethod]
@@ -199,7 +199,7 @@ namespace WarrantyRegUnitTest
             Mock<IProductWarrantyAPIController> mockProductWarrantyAPIControllerClass = new Mock<IProductWarrantyAPIController>();
             mockProductWarrantyAPIControllerClass.Setup(b => b.IsProductWarrantyValid(It.IsAny<ProductWarrantyData>())).Returns(Task.FromResult(true));
 
-            ProductWarrantyData productWarrantyDataSample = new ProductWarrantyData { ProdWarrantyId = 1, CustomerId = 1, ProductId = 1, ProductSerialNumber = "123WES345B",warrantyDate= Convert.ToDateTime( "12/22/2021") };
+            ProductWarrantyData productWarrantyDataSample = new ProductWarrantyData { ProdWarrantyId = 1, CustomerId = 1, ProductId = 1, ProductSerialNumber = "123WES345B",WarrantyDate= Convert.ToDateTime( "12/22/2021") };
             //Pass in the IRepository Customers
             ProductWarrantyAPIController productWarrantyAPIController = new ProductWarrantyAPIController(mockProductWarrantyAPIController.Object, mockcustomersAPIController.Object, mockproductsAPIController.Object);
             var result = await productWarrantyAPIController.ExtendRegistedProductWarranty(productWarrantyDataSample.ProdWarrantyId,productWarrantyDataSample) as StatusCodeResult;
@@ -241,14 +241,14 @@ namespace WarrantyRegUnitTest
             Mock<IProductWarrantyAPIController> mockProductWarrantyAPIControllerClass = new Mock<IProductWarrantyAPIController>();
             mockProductWarrantyAPIControllerClass.Setup(b => b.IsProductWarrantyValid(It.IsAny<ProductWarrantyData>())).Returns(Task.FromResult(true));
 
-            ProductWarrantyData productWarrantyDataSample = new ProductWarrantyData { ProdWarrantyId = 1, CustomerId = 1, ProductId = 1, ProductSerialNumber = "123WES345B",warrantyDate= Convert.ToDateTime( "12/22/2021") };
+            ProductWarrantyData productWarrantyDataSample = new ProductWarrantyData { ProdWarrantyId = 1, CustomerId = 1, ProductId = 1, ProductSerialNumber = "123WES345B",WarrantyDate= Convert.ToDateTime( "12/22/2021") };
             //Pass in the IRepository Customers
             ProductWarrantyAPIController productWarrantyAPIController = new ProductWarrantyAPIController(mockProductWarrantyAPIController.Object, mockcustomersAPIController.Object, mockproductsAPIController.Object);
             var result = await productWarrantyAPIController.ExtendRegistedProductWarranty(productWarrantyDataSample.ProdWarrantyId,productWarrantyDataSample);
             var content = result as ObjectResult;
             var productWarranty = (ProductWarrantyData)content.Value;
 
-            Assert.AreEqual(productWarrantyDataSample.warrantyDate.Year, productWarranty.warrantyDate.Year);
+            Assert.AreEqual(productWarrantyDataSample.WarrantyDate.Year, productWarranty.WarrantyDate.Year);
         }
     }
 }
