@@ -516,4 +516,3 @@ C:\Users\cirsa\source\repos\WarrantyRegUnitTest\bin\Debug\net5.0\WarrantyRegistr
 C:\Users\cirsa\source\repos\WarrantyRegUnitTest\bin\Debug\net5.0\WarrantyRegistrationApp.pdb
 C:\Users\cirsa\source\repos\WarrantyRegUnitTest\bin\Debug\net5.0\Castle.Core.dll
 C:\Users\cirsa\source\repos\WarrantyRegUnitTest\bin\Debug\net5.0\Moq.dll
-C:\Users\cirsa\source\repos\WarrantyRegUnitTest\bin\Debug\net5.0\WarrantyRegistrationApp.StaticWebAssets.xml
