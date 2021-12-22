@@ -130,6 +130,45 @@ namespace WarrantyRegUnitTest
             Assert.AreEqual(false, result);
         }
 
+        [TestMethod]
+        public async Task TestRegisterNewProductWarrantyDataAsync()
+        {
+            IEnumerable<Product> product = new List<Product>()
+            {
+                new Product { ProductId=1,ProductName="monitor", Manufacturer="testCompany", ProductSerialNumber="123WES345B1" },
+                new Product { ProductId=2,ProductName="monitor2", Manufacturer="testCompany2", ProductSerialNumber="123WES345B2" },
+                new Product { ProductId=3,ProductName="monitor3", Manufacturer="testCompany3", ProductSerialNumber="123WES345B3" }
+            };
+
+            //Mock IRepository of Product
+            Mock<IRepository<Product>> mockproductsAPIController = new Mock<IRepository<Product>>();
+            mockproductsAPIController.Setup(b => b.GetBySerialNumberAsync(It.IsAny<string>())).Returns(Task.FromResult(product));
+
+            Customer customers = new Customer { CustomerId = 1, FirstName = "Sam", LastName = "Antwi", Address = "314 Some Place", City = "Dayton", CompanyName = "Test", ZipCode = "45424", PhoneNumber = "937-444-0000", State = "New York" };
+            //Mock IRepository of Customers
+            Mock<IRepository<Customer>> mockcustomersAPIController = new Mock<IRepository<Customer>>();
+            mockcustomersAPIController.Setup(b => b.GetByIDAsync(It.IsAny<int>())).Returns(Task.FromResult(customers));
+
+            IEnumerable<ProductWarrantyData> productWarrantyData = null;
+
+            //Mock IRepository of ProductWarranty
+            Mock<IRepository<ProductWarrantyData>> mockProductWarrantyAPIController = new Mock<IRepository<ProductWarrantyData>>();
+            mockProductWarrantyAPIController.Setup(b => b.GetBySerialNumberAsync(It.IsAny<string>())).Returns(Task.FromResult(productWarrantyData));
+
+            Mock<IProductWarrantyAPIController> mockProductWarrantyAPIControllerClass = new Mock<IProductWarrantyAPIController>();
+            mockProductWarrantyAPIControllerClass.Setup(b => b.IsProductWarrantyValid(It.IsAny<ProductWarrantyData>())).Returns(Task.FromResult(true));
+
+            ProductWarrantyData productWarrantyDataSample = new ProductWarrantyData { ProdWarrantyId = 1, CustomerId = 1, ProductId = 1, ProductSerialNumber = "123WES345B" };
+            //Pass in the IRepository Customers
+            ProductWarrantyAPIController productWarrantyAPIController = new ProductWarrantyAPIController(mockProductWarrantyAPIController.Object, mockcustomersAPIController.Object, mockproductsAPIController.Object);
+            var result = await productWarrantyAPIController.RegisterNewProductWarrantyData(productWarrantyDataSample);
+            var content = result.Result as ObjectResult;
+            var productWarranty = (ProductWarrantyData) content.Value;
+
+            Assert.AreEqual(System.DateTime.Now.AddYears(5).Year, productWarranty.warrantyDate.Year);
+        }
+
+
 
     }
 }
