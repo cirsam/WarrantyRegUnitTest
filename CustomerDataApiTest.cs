@@ -11,7 +11,7 @@ using WarrantyRegistrationApp.Repository;
 namespace WarrantyRegUnitTest
 {
     [TestClass]
-    public class UnitTestWarrantyReg
+    public class CustomerData
     {
         [TestMethod]
         public async Task TestGetAllAsyncMethodAsync()
