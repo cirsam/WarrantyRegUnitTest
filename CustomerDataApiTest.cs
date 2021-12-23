@@ -13,6 +13,14 @@ namespace WarrantyRegUnitTest
     [TestClass]
     public class CustomerData
     {
+        private Mock<IRepository<Customer>> _mockcustomersAPIController;
+
+        [TestInitialize]
+        public void TestInitializer()
+        {
+            _mockcustomersAPIController = new Mock<IRepository<Customer>>();
+        }
+
         [TestMethod]
         public async Task TestGetAllAsyncMethodAsync()
         {
@@ -24,12 +32,11 @@ namespace WarrantyRegUnitTest
             };
 
             //Mock IRepository of Customers
-            Mock<IRepository<Customer>> mockcustomersAPIController = new Mock<IRepository<Customer>>();
-            mockcustomersAPIController.Setup(b => b.GetAllAsync()).Returns(Task.FromResult(customers));
+            _mockcustomersAPIController.Setup(b => b.GetAllAsync()).Returns(Task.FromResult(customers));
 
             //Pass in the IRepository Customers
-            CustomersAPIController customersAPIController = new CustomersAPIController(mockcustomersAPIController.Object);
-            ActionResult<IEnumerable<Customer>> result = await customersAPIController.GetCustomers() as ActionResult<IEnumerable<Customer>>;
+            CustomersAPIController customersAPIController = new CustomersAPIController(_mockcustomersAPIController.Object);
+            ActionResult<IEnumerable<Customer>> result = await customersAPIController.GetCustomers();
             Assert.IsNotNull(result);
         }
 
@@ -55,11 +62,10 @@ namespace WarrantyRegUnitTest
             Customer customers = new Customer { CustomerId = 1, FirstName = "Sam", LastName = "Antwi", Address = "314 Some Place", City = "Dayton", CompanyName = "Test", ZipCode = "45424", PhoneNumber = "937-444-0000", State = "New York" };
 
             //Mock IRepository of Customer
-            Mock<IRepository<Customer>> mockcustomersAPIController = new Mock<IRepository<Customer>>();
-            mockcustomersAPIController.Setup(b => b.UpdateAsync(It.IsAny<Customer>())).Callback<Customer>(s => customers = s);
+            _mockcustomersAPIController.Setup(b => b.UpdateAsync(It.IsAny<Customer>())).Callback<Customer>(s => customers = s);
 
             //Pass in the IRepository Customer
-            CustomersAPIController customersAPIController = new CustomersAPIController(mockcustomersAPIController.Object);
+            CustomersAPIController customersAPIController = new CustomersAPIController(_mockcustomersAPIController.Object);
             var result = await customersAPIController.PutCustomer(customers.CustomerId, customers) as StatusCodeResult;
 
             Assert.IsNotNull(result);
@@ -73,11 +79,10 @@ namespace WarrantyRegUnitTest
             Customer customers = new Customer { CustomerId = 2, FirstName = "Sam", LastName = "Antwi", Address = "314 Some Place", City = "Dayton", CompanyName = "Test", ZipCode = "45424", PhoneNumber = "937-444-0000", State = "New York" };
 
             //Mock IRepository of Customer
-            Mock<IRepository<Customer>> mockcustomersAPIController = new Mock<IRepository<Customer>>();
-            mockcustomersAPIController.Setup(b => b.UpdateAsync(It.IsAny<Customer>())).Callback<Customer>(s => customers = s);
+            _mockcustomersAPIController.Setup(b => b.UpdateAsync(It.IsAny<Customer>())).Callback<Customer>(s => customers = s);
 
             //Pass in the IRepository Customer
-            CustomersAPIController customersAPIController = new CustomersAPIController(mockcustomersAPIController.Object);
+            CustomersAPIController customersAPIController = new CustomersAPIController(_mockcustomersAPIController.Object);
             var result = await customersAPIController.PutCustomer(3,customers) as StatusCodeResult;
 
             Assert.IsNotNull(result);
@@ -91,11 +96,10 @@ namespace WarrantyRegUnitTest
             Customer customers = new Customer { CustomerId = 2, FirstName = "Sam", LastName = "Antwi", Address = "314 Some Place", City = "Dayton", CompanyName = "Test", ZipCode = "45424", PhoneNumber = "937-444-0000", State = "New York" };
 
             //Mock IRepository of Customer
-            Mock<IRepository<Customer>> mockcustomersAPIController = new Mock<IRepository<Customer>>();
-            mockcustomersAPIController.Setup(b => b.InsertAsync(It.IsAny<Customer>())).Returns(Task.FromResult(customers));
+            _mockcustomersAPIController.Setup(b => b.InsertAsync(It.IsAny<Customer>())).Returns(Task.FromResult(customers));
 
             //Pass in the IRepository Customer
-            CustomersAPIController customersAPIController = new CustomersAPIController(mockcustomersAPIController.Object);
+            CustomersAPIController customersAPIController = new CustomersAPIController(_mockcustomersAPIController.Object);
             var result = await customersAPIController.PostCustomer(customers) as ActionResult<Customer>;
 
             Assert.IsNotNull(result);
@@ -107,12 +111,11 @@ namespace WarrantyRegUnitTest
             Customer customers = new Customer { CustomerId = 2, FirstName = "Sam", LastName = "Antwi", Address = "314 Some Place", City = "Dayton", CompanyName = "Test", ZipCode = "45424", PhoneNumber = "937-444-0000", State = "New York" };
 
             //Mock IRepository of Customer
-            Mock<IRepository<Customer>> mockcustomersAPIController = new Mock<IRepository<Customer>>();
-            mockcustomersAPIController.Setup(b => b.GetByIDAsync(It.IsAny<int>())).Returns(Task.FromResult(customers));
-            mockcustomersAPIController.Setup(b => b.Delete(It.IsAny<Customer>()));
+            _mockcustomersAPIController.Setup(b => b.GetByIDAsync(It.IsAny<int>())).Returns(Task.FromResult(customers));
+            _mockcustomersAPIController.Setup(b => b.Delete(It.IsAny<Customer>()));
 
             //Pass in the IRepository Customer
-            CustomersAPIController customersAPIController = new CustomersAPIController(mockcustomersAPIController.Object);
+            CustomersAPIController customersAPIController = new CustomersAPIController(_mockcustomersAPIController.Object);
             var result = await customersAPIController.DeleteCustomer(customers.CustomerId) as StatusCodeResult;
 
             Assert.IsNotNull(result);
