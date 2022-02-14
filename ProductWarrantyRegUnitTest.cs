@@ -158,7 +158,7 @@ namespace WarrantyRegUnitTest
 
             //Mock the ProductWarrantyAPIControllerClass
             Mock<IProductWarrantyAPIController> mockProductWarrantyAPIControllerClass = new Mock<IProductWarrantyAPIController>();
-            mockProductWarrantyAPIControllerClass.Setup(b => b.IsProductWarrantyValid(It.IsAny<ProductWarrantyData>())).Returns(Task.FromResult(true));
+            mockProductWarrantyAPIControllerClass.Setup(b => b.IsProductWarrantyValid(It.IsAny<ProductWarrantyData>())).Returns(Task.FromResult("ok"));
 
             ProductWarrantyData productWarrantyDataSample = new ProductWarrantyData { ProdWarrantyId = 1, CustomerId = 1, ProductId = 1, ProductSerialNumber = "123WES345B" };
             //Pass in the IRepository Customers
@@ -193,7 +193,7 @@ namespace WarrantyRegUnitTest
             _mockProductWarrantyAPIController.Setup(b => b.GetBySerialNumberAsync(It.IsAny<string>())).Returns(Task.FromResult(productWarrantyData));
 
             //Mock the ProductWarrantyAPIControllerClass
-            _mockProductWarrantyAPIControllerClass.Setup(b => b.IsProductWarrantyValid(It.IsAny<ProductWarrantyData>())).Returns(Task.FromResult(true));
+            _mockProductWarrantyAPIControllerClass.Setup(b => b.IsProductWarrantyValid(It.IsAny<ProductWarrantyData>())).Returns(Task.FromResult("bad"));
 
             ProductWarrantyData productWarrantyDataSample = new ProductWarrantyData { ProdWarrantyId = 1, CustomerId = 1, ProductId = 1, ProductSerialNumber = "123WES345B",WarrantyDate= Convert.ToDateTime( "12/22/2021") };
             //Pass in the IRepository Customers
@@ -231,7 +231,7 @@ namespace WarrantyRegUnitTest
             _mockProductWarrantyAPIController.Setup(b => b.GetBySerialNumberAsync(It.IsAny<string>())).Returns(Task.FromResult(productWarrantyData));
 
             //Mock the ProductWarrantyAPIControllerClass
-            _mockProductWarrantyAPIControllerClass.Setup(b => b.IsProductWarrantyValid(It.IsAny<ProductWarrantyData>())).Returns(Task.FromResult(true));
+            _mockProductWarrantyAPIControllerClass.Setup(b => b.IsProductWarrantyValid(It.IsAny<ProductWarrantyData>())).Returns(Task.FromResult("ok"));
 
             ProductWarrantyData productWarrantyDataSample = new ProductWarrantyData { ProdWarrantyId = 1, CustomerId = 1, ProductId = 1, ProductSerialNumber = "123WES345B",WarrantyDate= Convert.ToDateTime( "12/22/2021") };
             //Pass in the IRepository Customers
