@@ -524,3 +524,4 @@ C:\Users\cirsa\source\repos\WarrantyRegUnitTest\bin\Debug\net5.0\Serilog.Formatt
 C:\Users\cirsa\source\repos\WarrantyRegUnitTest\bin\Debug\net5.0\Serilog.Sinks.Async.dll
 C:\Users\cirsa\source\repos\WarrantyRegUnitTest\bin\Debug\net5.0\Serilog.Sinks.File.dll
 C:\Users\cirsa\source\repos\WarrantyRegUnitTest\bin\Debug\net5.0\Serilog.Sinks.RollingFile.dll
+C:\Users\cirsa\source\repos\WarrantyRegUnitTest\bin\Debug\net5.0\WarrantyRegistrationApp.StaticWebAssets.xml

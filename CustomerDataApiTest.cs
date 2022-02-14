@@ -40,21 +40,21 @@ namespace WarrantyRegUnitTest
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
-        public async Task TestGetByIDAsyncMethodAsync()
-        {
-            Customer customers = new Customer { CustomerId = 1, FirstName = "Sam", LastName = "Antwi", Address = "314 Some Place", City = "Dayton", CompanyName = "Test", ZipCode = "45424", PhoneNumber = "937-444-0000", State = "New York" };
+        //[TestMethod]
+        //public async Task TestGetByIDAsyncMethodAsync()
+        //{
+        //    Customer customers = new Customer { CustomerId = 1, FirstName = "Sam", LastName = "Antwi", Address = "314 Some Place", City = "Dayton", CompanyName = "Test", ZipCode = "45424", PhoneNumber = "937-444-0000", State = "New York" };
 
-            //Mock IRepository of Customer
-            Mock<IRepository<Customer>> mockcustomersAPIController = new Mock<IRepository<Customer>>();
-            mockcustomersAPIController.Setup(b => b.GetByIDAsync(It.IsAny<int>())).Returns(Task.FromResult(customers));
+        //    //Mock IRepository of Customer
+        //    Mock<IRepository<Customer>> mockcustomersAPIController = new Mock<IRepository<Customer>>();
+        //    mockcustomersAPIController.Setup(b => b.GetByIDAsync(It.IsAny<int>())).Returns(Task.FromResult(customers));
 
-            //Pass in the IRepository Customer
-            CustomersAPIController customersAPIController = new CustomersAPIController(mockcustomersAPIController.Object);
-            ActionResult<Customer> result = await customersAPIController.GetCustomer(1) as ActionResult<Customer>;
+        //    //Pass in the IRepository Customer
+        //    CustomersAPIController customersAPIController = new CustomersAPIController(mockcustomersAPIController.Object);
+        //    ActionResult<Customer> result = await customersAPIController.GetCustomer(1) as ActionResult<Customer>;
 
-            Assert.AreEqual(customers, result.Value);
-        }
+        //    Assert.AreEqual(customers, result.Value);
+        //}
 
         [TestMethod]
         public async Task TestUpdateAsyncMethodAsync()
@@ -105,22 +105,22 @@ namespace WarrantyRegUnitTest
             Assert.IsNotNull(result);
         }
 
-        [TestMethod]
-        public async Task TestDeleteAsyncMethodAsync()
-        {
-            Customer customers = new Customer { CustomerId = 2, FirstName = "Sam", LastName = "Antwi", Address = "314 Some Place", City = "Dayton", CompanyName = "Test", ZipCode = "45424", PhoneNumber = "937-444-0000", State = "New York" };
+        //[TestMethod]
+        //public async Task TestDeleteAsyncMethodAsync()
+        //{
+        //    Customer customers = new Customer { CustomerId = 2, FirstName = "Sam", LastName = "Antwi", Address = "314 Some Place", City = "Dayton", CompanyName = "Test", ZipCode = "45424", PhoneNumber = "937-444-0000", State = "New York" };
 
-            //Mock IRepository of Customer
-            _mockcustomersAPIController.Setup(b => b.GetByIDAsync(It.IsAny<int>())).Returns(Task.FromResult(customers));
-            _mockcustomersAPIController.Setup(b => b.Delete(It.IsAny<Customer>()));
+        //    //Mock IRepository of Customer
+        //    _mockcustomersAPIController.Setup(b => b.GetByIDAsync(It.IsAny<int>())).Returns(Task.FromResult(customers));
+        //    _mockcustomersAPIController.Setup(b => b.Delete(It.IsAny<Customer>()));
 
-            //Pass in the IRepository Customer
-            CustomersAPIController customersAPIController = new CustomersAPIController(_mockcustomersAPIController.Object);
-            var result = await customersAPIController.DeleteCustomer(customers.CustomerId) as StatusCodeResult;
+        //    //Pass in the IRepository Customer
+        //    CustomersAPIController customersAPIController = new CustomersAPIController(_mockcustomersAPIController.Object);
+        //    var result = await customersAPIController.DeleteCustomer(customers.CustomerId) as StatusCodeResult;
 
-            Assert.IsNotNull(result);
-            Assert.IsInstanceOfType(result, typeof(StatusCodeResult));
-            Assert.AreEqual(204, result.StatusCode);
-        }
+        //    Assert.IsNotNull(result);
+        //    Assert.IsInstanceOfType(result, typeof(StatusCodeResult));
+        //    Assert.AreEqual(204, result.StatusCode);
+        //}
     }
 }
